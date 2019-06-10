@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TicTacToe
+namespace TicTacToe.Move
 {
     class MoveValidator
     {

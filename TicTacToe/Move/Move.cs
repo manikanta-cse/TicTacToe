@@ -1,4 +1,4 @@
-﻿namespace TicTacToe
+﻿namespace TicTacToe.Move
 {
     public class Move
     {
@@ -6,6 +6,6 @@
 
         public int ColNumber { get; set; }
 
-        public User Player { get; set; }
+        public User.User Player { get; set; }
     }
 }

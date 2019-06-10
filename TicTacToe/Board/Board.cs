@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using TicTacToe.Move;
+using TicTacToe.Writer;
 
-namespace TicTacToe
+namespace TicTacToe.Board
 {
     class Board
     {
         public int[,] Blocks { get; private set; }
 
-        public User Winner { get; private set; }
+        public User.User Winner { get; private set; }
 
         public int BoardSize { get; private set; }
 
@@ -29,11 +29,11 @@ namespace TicTacToe
             RowSum = new int[3];
             ColSum = new int[3];
             _writer = writer;
-            Winner = new User();
+            Winner = new User.User();
         }
 
 
-        public User MakeMove(Move move)
+        public User.User MakeMove(Move.Move move)
         {
 
             MoveValidator.Validate(BuildInput(move));
@@ -54,12 +54,12 @@ namespace TicTacToe
 
         }
 
-        private MoveValidatorInput BuildInput(Move move)
+        private MoveValidatorInput BuildInput(Move.Move move)
         {
             return new MoveValidatorInput { Board = Blocks, Move = move, BoardSize = BoardSize, Winner = Winner };
         }
 
-        private void SetPlayerId(Move move)
+        private void SetPlayerId(Move.Move move)
         {
             move.Player.Id = move.Player.Id == 0 ? -1 : +1;
         }
@@ -71,7 +71,7 @@ namespace TicTacToe
             Console.WriteLine("--------------------");
         }
 
-        private void SetDiagnolMove(Move move)
+        private void SetDiagnolMove(Move.Move move)
         {
             if (IsDiagnolMove(move))
             {
@@ -79,7 +79,7 @@ namespace TicTacToe
             }
         }
 
-        private void SetReverseDiagnolMove(Move move)
+        private void SetReverseDiagnolMove(Move.Move move)
         {
             if (IsReverseDiagnolMove(move))
             {
@@ -96,32 +96,32 @@ namespace TicTacToe
         //    }
         //}
 
-        public bool IsWinner(Move move)
+        public bool IsWinner(Move.Move move)
         {
             return RowSum[move.RowNumber] == Math.Abs(BoardSize) || ColSum[move.ColNumber] == Math.Abs(BoardSize) || DiagnolSum == Math.Abs(BoardSize) || RevDiagnolSum == Math.Abs(BoardSize);
         }
 
-        private void SetPlayerOnBoard(Move move)
+        private void SetPlayerOnBoard(Move.Move move)
         {
             Blocks[move.RowNumber, move.ColNumber] = move.Player.Id;
         }
 
-        private void DoRowSum(Move move)
+        private void DoRowSum(Move.Move move)
         {
             RowSum[move.RowNumber] += move.Player.Id;
         }
 
-        private void DoColoumnSum(Move move)
+        private void DoColoumnSum(Move.Move move)
         {
             ColSum[move.ColNumber] += move.Player.Id;
         }
 
-        private bool IsDiagnolMove(Move move)
+        private bool IsDiagnolMove(Move.Move move)
         {
             return move.RowNumber == move.ColNumber;
         }
 
-        private bool IsReverseDiagnolMove(Move move)
+        private bool IsReverseDiagnolMove(Move.Move move)
         {
             return move.RowNumber == BoardSize - 1 - move.ColNumber;
         }

@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TicTacToe
+namespace TicTacToe.Writer
 {
     class ConsoleWriter : IWriter
     {
-        public void Write(Board board)
+        public void Write(Board.Board board)
         {
             int rowLength = board.Blocks.GetLength(0);
             int colLength = board.Blocks.GetLength(1);

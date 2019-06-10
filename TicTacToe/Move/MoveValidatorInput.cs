@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicTacToe
+﻿namespace TicTacToe.Move
 {
     class MoveValidatorInput
     {
@@ -12,7 +8,7 @@ namespace TicTacToe
 
         public int[,] Board { get; set; }
 
-        public User Winner { get; set; }
+        public User.User Winner { get; set; }
 
 
     }

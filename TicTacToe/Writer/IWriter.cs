@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TicTacToe
+﻿namespace TicTacToe.Writer
 {
     interface IWriter
     {
-        void Write(Board board);
+        void Write(Board.Board board);
     }
 }

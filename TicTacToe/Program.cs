@@ -1,4 +1,5 @@
 ﻿using System;
+using TicTacToe.Writer;
 
 namespace TicTacToe
 {
@@ -7,7 +8,7 @@ namespace TicTacToe
         static void Main(string[] args)
         {
 
-            var game = new Game(new Board(new ConsoleWriter()));
+            var game = new Game.Game(new Board.Board(new ConsoleWriter()));
 
 
             Console.WriteLine("Hello Welcome to Tic Tac Toe Game");
@@ -17,8 +18,8 @@ namespace TicTacToe
             Console.WriteLine("Enter player two name");
             var playerTwo = Convert.ToString(Console.ReadLine());
 
-            game.PlayerOne = new User { Name = playerOne,Id=0 };
-            game.PlayerTwo = new User { Name = playerTwo,Id=1 };
+            game.PlayerOne = new User.User { Name = playerOne,Id=0 };
+            game.PlayerTwo = new User.User { Name = playerTwo,Id=1 };
             Console.WriteLine("\n");
             Console.WriteLine("Board has 3 rows and 3 columns , namely 0,1,2 \n");
 
@@ -34,7 +35,7 @@ namespace TicTacToe
                 var col = Convert.ToInt32(Console.ReadLine());
 
 
-                game.MakeMove(new Move { ColNumber = col, RowNumber = row, Player = new User { Id = game.CurrentPlayer.Name == playerOne ? 0 : 1, Name = game.CurrentPlayer.Name == playerOne ? playerTwo : playerOne } });
+                game.MakeMove(new Move.Move { ColNumber = col, RowNumber = row, Player = new User.User { Id = game.CurrentPlayer.Name == playerOne ? 0 : 1, Name = game.CurrentPlayer.Name == playerOne ? playerTwo : playerOne } });
 
                 game.PrintBoard();
 
